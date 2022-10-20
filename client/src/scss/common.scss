@@ -1,0 +1,286 @@
+#app {
+  font-family: $body-font;
+  font-size: $body-font-size;
+  line-height: $body-line-height;
+  color: $body-color;
+  background-color: $body-bg;
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 60px; /* Margin bottom by footer height */
+}
+footer ul {
+    margin-top: 1rem;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    display: none;
+}
+container {
+    width: auto;
+    padding: 0 15px;
+}
+.router-link-exact-active {
+    font-weight: 700;
+}
+.bg-dark {
+    background-color: #888e93 !important;
+}
+.message-area {
+    height: 400px;
+    max-height: 400px;
+    overflow-y: scroll;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+.lectures-area {
+    height: 800px;
+    max-height: 800px;
+    overflow-y: scroll;
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+.users-area {
+    height: 800px;
+    max-height: 800px;
+    overflow-y: scroll;
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+.user {
+    font-weight: 800;
+}
+.body {
+    margin-bottom: 0;
+    white-space: pre-wrap;
+}
+.message {
+    border-bottom: 1px solid #000000;
+    padding: 10px;
+}
+.lecturer-chat-active {
+    background-color: #b9b9b9;
+}
+.lecture-chat {
+    font-weight: 800;
+    border-bottom: 1px solid #000000;
+    cursor: pointer;
+}
+.user-chat {
+    font-weight: 800;
+    border-bottom: 1px solid #000000;
+    cursor: pointer;
+}
+.self {
+    background-color: #f0f0f0;
+    text-align: right;
+}
+.form {
+    padding: 8px;
+}
+.form-input {
+    width: 100%;
+    border: 1px solid #d3e0e9;
+    padding: 5px 10px;
+    outline: none;
+}
+.notice {
+    color: #aaa
+}
+
+svg {
+    max-width: 25px;
+    min-width: 25px;
+}
+[selected][disabled]{
+    display: none;
+}
+.modal-footer {
+    display: contents;
+}
+.modal_i {
+    width: 25px;
+}
+.preview_modal {
+    background: rgba(0, 0, 0, .7);
+}
+.dropdown-menu {
+    display: block;
+}
+.add-form-control {
+    width: auto;
+}
+.position-absolute.end-0 {
+    right: 5px;
+}
+.student-task .block-1 {
+    border: #0a0302 solid 1px;
+    padding: 10px;
+    font-family: 'Lato', sans-serif;
+    width: 100%;
+}
+.student-task .deadline-text {
+    clear: both;
+    color: #5bb7c7;
+}
+.student-task .answer-input {
+    clear: both;
+    width: 100%;
+}
+.student-task .answer-title {
+    clear: both;
+    font-weight: bold;
+}
+.student-task .answer-button {
+    clear: both;
+    margin-bottom: 1rem;
+}
+.student-task-list {
+    padding-left: 0;
+}
+.student-task-list li {
+    list-style-type: none;
+    border: #0a0302 solid 1px;
+}
+.student-task-list .col-6 {
+    margin: auto;
+}
+.student-task-list .col-3 {
+    margin: auto;
+}
+.student-task-list .title {
+    font-weight: bold;
+    font-size: 18px;
+}
+.modal-notifications {
+    display: block;
+    position: fixed;
+    top: 38px;
+    right: 0;
+    z-index: 1050;
+}
+.toast {
+    opacity: 1;
+}
+.centered {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+.bordered {
+    border: 1px solid;
+    border-radius: 10px;
+}
+.d-grid {
+    display: grid;
+}
+.small-input {
+    width: 40px;
+    border: none;
+}
+.right {
+    margin: 0 0 0 auto;
+}
+.border {
+    height: min-content;
+}
+.message .time {
+    font-size: 11px;
+}
+.modal-content {
+    width: fit-content;
+}
+.notification-modal-body {
+    height: 100%;
+    max-height: 800px;
+    overflow-y: scroll;
+}
+.notification-modal-open {
+    display: flex;
+    margin-right: -30px;
+}
+.notification-count {
+    background: #dc3545;
+    padding: 15px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    max-width: 10px;
+    max-height: 10px;
+    position: relative;
+    top: -15px;
+    right: 20px;
+}
+.toast-body a {
+    color: #007bff !important;
+    cursor: pointer;
+}
+.modal-title {
+    margin: auto;
+}
+h3 {
+     padding: 0.5rem 1rem;
+ }
+.modal-dialog {
+    width: fit-content;
+}
+.li4 {
+    border: 1px solid;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+.span4,
+.thumbnail {
+    display: flex;
+}
+ul.thumbnails {
+    display: inline;
+}
+.counts {
+    border-left: 1px solid grey;
+    margin-right: 20px;
+}
+.toped {
+    margin-top: -100px;
+}
+.span4 {
+    border: 1px solid;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+.span4 h3 {
+    padding-left: 0px;
+}
+.float-right{
+    margin-right: 10px;
+}
+.nav-item .nav-link {
+    width: max-content;
+}
+.min-width {
+    min-width: 130px;
+}
+.min-width-long {
+    min-width: 210px;
+}
+.max-width {
+    width: 170px;
+}
+.max-width-long {
+    width: 240px;
+}
+.cut-text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

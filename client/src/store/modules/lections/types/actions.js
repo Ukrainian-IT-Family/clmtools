@@ -1,0 +1,6 @@
+export const GET_LECTIONS = 'GET_LECTIONS';
+export const GET_LECTION = 'GET_LECTION';
+export const GET_CREATED_LECTION = 'GET_CREATED_LECTION';
+export const ADD_LECTION = 'ADD_LECTION';
+export const EDIT_LECTION = 'EDIT_LECTION';
+export const DELETE_LECTION = 'DELETE_LECTION';
