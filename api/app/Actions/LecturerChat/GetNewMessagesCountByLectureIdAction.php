@@ -12,10 +12,10 @@ final class GetNewMessagesCountByLectureIdAction
     {
     }
 
-    public function execute($user_id): int
+    public function execute($lecture_id): int
     {
         $chatRepository = $this->chatRepository;
-        $chats = $chatRepository->getChatsByLectureId($user_id);
+        $chats = $chatRepository->getChatsByLectureId($lecture_id);
 
         $count = 0;
         foreach($chats as $chat) {
