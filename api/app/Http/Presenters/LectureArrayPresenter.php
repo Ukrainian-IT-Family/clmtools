@@ -24,6 +24,7 @@ final class LectureArrayPresenter
             'course_id' => $lecture->getLectureCourseId(),
             'students' => $lecture->getStudentsId(),
             'task_id' => $lecture->getTaskId(),
+            'unread_by_lecturer' => $lecture->getUnreadByLecturerCount(),
         ];
     }
 

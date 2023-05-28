@@ -58,6 +58,10 @@ export default {
                 lecture_id: lecture_id
             });
 
+            await ApiRequestService.post('/mark-messages', {
+                chat_id: data.data.id
+            });
+
             commit(mutations.SET_CHAT, {
                 chat: data.data
             });

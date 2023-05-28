@@ -55,7 +55,6 @@ final class ChatRepository
     public function markMessagesAsReadByChatId(int $chat_id): void
     {
         Chat::findOrFail($chat_id)
-            ->first()
             ->messages()
             ->where('read_by_lecturer', false)
             ->update(['read_by_lecturer' => true]);

@@ -11,7 +11,7 @@
                              :key="lecture.id"
                              @click="getLectureStudentsList(lecture.id)"
                         >
-                            <strong>{{ lecture.title }}</strong>
+                            <span style="color:red;">{{ lecture.unread_by_lecturer ? lecture.unread_by_lecturer : ''  }}</span> <strong>{{ lecture.title }}</strong>
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                             :key="student.id"
                             @click="getChatByStudentAndLecture(student.id)"
                         >
-                            <strong>{{ student.name }} {{ student.last_name }}</strong>
+                            <span style="color:red;">{{ student.messages_unread_by_lecturer ? student.messages_unread_by_lecturer : ''  }}</span> <strong>{{ student.name }} {{ student.last_name }}</strong>
                         </div>
                     </div>
                     <div class="users-area" v-else>

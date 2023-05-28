@@ -6,6 +6,7 @@ namespace App\Actions\LecturerChat;
 
 use App\Events\MessageCreated;
 use App\Events\NotificationCreated;
+use App\Models\Chat;
 use App\Models\Message;
 use App\Repository\ChatRepository;
 use App\Repository\MessageRepository;
@@ -32,6 +33,7 @@ final class AddMessageAction
         $message->user_id = Auth::id();
         $message->chat_id = $chat->getId();
         $message->body = $request->getBody();
+        $message->read_by_lecturer = true;
 
         if($request->getFile()){
             $filePath = Storage::putFileAs(
@@ -45,6 +47,11 @@ final class AddMessageAction
 
         $messageRepository = $this->messageRepository;
         $message = $messageRepository->save($message);
+
+        Chat::findOrFail($chat->getId())
+            ->messages()
+            ->where('read_by_lecturer', false)
+            ->update(['read_by_lecturer' => true]);
 
         broadcast(new MessageCreated($message))
             ->toOthers();
