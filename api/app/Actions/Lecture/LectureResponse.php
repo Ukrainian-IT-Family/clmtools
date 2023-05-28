@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\Lecture;
 
+use App\Models\Message;
 use Illuminate\Support\Carbon;
 use App\Repository\LectureRepository;
 
@@ -63,5 +64,13 @@ final class LectureResponse
     {
         $lectureRepository = new LectureRepository;
         return $lectureRepository->getUsersId($this->getLectureId());
+    }
+
+    public function getUnreadByLecturerCount(): ?int
+    {
+        $chatIds = $this->lecture->chats->pluck('id');
+        return Message::whereIn('chat_id', $chatIds)
+            ->where('read_by_lecturer', false)
+            ->count();
     }
 }

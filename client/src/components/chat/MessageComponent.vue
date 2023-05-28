@@ -20,7 +20,7 @@ export default {
   },
   data() {
     return {
-      backend_url: process.env.VUE_APP_BACKEND_URL
+        backend_url: process.env.VUE_APP_BACKEND_URL
     };
   },
 };

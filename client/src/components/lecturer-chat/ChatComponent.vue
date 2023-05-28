@@ -11,7 +11,7 @@
                              :key="lecture.id"
                              @click="getLectureStudentsList(lecture.id)"
                         >
-                            <strong>{{ lecture.title }}</strong>
+                            <span style="color:red;">{{ lecture.unread_by_lecturer ? lecture.unread_by_lecturer : ''  }}</span> <strong>{{ lecture.title }}</strong>
                         </div>
                     </div>
                 </div>

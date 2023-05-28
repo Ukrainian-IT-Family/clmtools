@@ -32,6 +32,7 @@ final class AddMessageAction
         $message->user_id = Auth::id();
         $message->chat_id = $chat->getId();
         $message->body = $request->getBody();
+        $message->read_by_lecturer = false;
 
         if($request->getFile()){
             $filePath = Storage::putFileAs(
