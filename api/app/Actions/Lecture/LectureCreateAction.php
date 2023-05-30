@@ -20,10 +20,15 @@ final class LectureCreateAction
 
     public function execute(LectureCreateRequest $request): LectureResponse
     {
-        $link_parts = stristr($request->getLink(), '=');
+        $link_parts = '';
+        parse_str(parse_url($request->getLink(), PHP_URL_QUERY), $query);
+        if (isset($query['v'])) {
+            $link_parts = $query['v'];
+        }
+
         $preview_image = $link_parts ?
-            config('constants.thumbnail.youtube').mb_substr($link_parts, 1).config('constants.thumbnail.youtube_size') :
-            config('constants.thumbnail.empty').$request->getTitle();
+            config('constants.thumbnail.youtube') . $link_parts . config('constants.thumbnail.youtube_size') :
+            config('constants.thumbnail.empty') . $request->getTitle();
 
         $lecture = $this->lectureRepository->create([
             'title' => $request->getTitle(),

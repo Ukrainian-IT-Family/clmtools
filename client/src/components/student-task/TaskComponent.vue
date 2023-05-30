@@ -36,7 +36,7 @@
                             </p>
                         </div>
                         <p class="deadline-text" v-if="deadlinePassed">
-                          {{ $t("chat.task_expired") }} {{ this.GET_TASK_ELEMENT.deadline }}
+                          {{ $t("tasks.task_expired") }} {{ this.GET_TASK_ELEMENT.deadline }}
                         </p>
                     </form>
                     <div class="block-1" v-if="isRated">

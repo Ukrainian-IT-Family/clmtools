@@ -230,7 +230,7 @@ export default {
 
     filterUsers() {
       this.allUsers = !this.filterRole ? this.GET_ALL_USERS : this.GET_ALL_USERS.filter(item => {
-        return item.role === this.filterRole;
+          return item.role === this.filterRole || (item.role === null && this.filterRole === "null");
       });
     },
 

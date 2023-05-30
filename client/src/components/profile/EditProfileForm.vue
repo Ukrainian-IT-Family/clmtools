@@ -221,8 +221,8 @@
         <BAlert show variant="success" v-if="successChangePassword"
           >{{ $t('message.pass_changed') }}</BAlert
         >
-        <BAlert show variant="danger" v-if="passErrors.message">{{
-          passErrors.message
+        <BAlert show variant="danger" v-if="passErrors">{{
+          passErrors
         }}</BAlert>
 
         <BFormGroup>
@@ -349,7 +349,7 @@ export default {
       newPasswordConfirmation: ''
     },
     successChangePassword: false,
-    passErrors: {},
+    passErrors: '',
     image: null,
     preview: null,
     successUploadImage: false,
@@ -410,9 +410,8 @@ export default {
           }, 2000);
         })
         .catch(error => {
-          this.passErrors = error.response.data.error;
           if (error.response.data.errors) {
-            this.passErrors = error.response.data.errors;
+            this.passErrors = Object.values(error.response.data.errors).join('\r\n');
           }
         });
     },
