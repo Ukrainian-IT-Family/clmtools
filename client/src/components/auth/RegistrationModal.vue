@@ -56,12 +56,13 @@ export default {
   },
 
   methods: {
-    ...mapActions('auth', ['reSendEmail']),
+    ...mapActions('auth', ['RESEND_VERIFY_EMAIL']),
     ...mapActions([
       'makeAlert'
     ]),
     reSend() {
-      this.reSendEmail({ id: this.registered_user_id.id })
+        console.log('123');
+      this.RESEND_VERIFY_EMAIL({ id: this.registered_user_id.id })
         .then(() => {
             this.makeAlert(this.$t("auth.resended"));
         })
