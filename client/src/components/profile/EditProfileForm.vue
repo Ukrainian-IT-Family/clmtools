@@ -368,7 +368,6 @@ export default {
   mounted() {
     this.getCitiesList();
     this.getUniversitiesList();
-      console.log(this.passErrors);
   },
 
   methods: {

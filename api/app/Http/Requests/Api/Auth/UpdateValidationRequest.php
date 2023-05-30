@@ -19,8 +19,8 @@ final class UpdateValidationRequest extends ApiFormRequest
             'name' => 'string|min:2',
             'last_name' => 'string|min:2',
             'date_birth' => 'date|before:tomorrow|date_format:Y-m-d',
-            'city' => 'integer',
-            'university' => 'integer',
+            'city' => 'integer|nullable',
+            'university' => 'integer|nullable',
             'graduation_year' => 'integer|digits:4|min:1900|max:'.(date('Y')+1)
         ];
     }
