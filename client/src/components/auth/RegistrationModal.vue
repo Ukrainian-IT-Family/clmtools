@@ -61,14 +61,13 @@ export default {
       'makeAlert'
     ]),
     reSend() {
-        console.log('123');
       this.RESEND_VERIFY_EMAIL({ id: this.registered_user_id.id })
         .then(() => {
             this.makeAlert(this.$t("auth.resended"));
         })
         .catch(error => {
-          if (error.response.data.errors) {
-              this.makeAlert(Object.values(error.response.data.errors).join('\r\n'));
+          if (error.message) {
+              this.makeAlert(error.message);
           }
         });
     },
