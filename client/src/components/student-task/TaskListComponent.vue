@@ -12,7 +12,7 @@
                         <div class="col-6 p-3">
                             <p class="title">{{ task.title }}</p>
                             <p>{{ $t("buttons.published") }}: {{ task.date }}</p>
-                            <p>{{ $t("lectures.lecture") }}: {{ task.lecture.id ? task.lecture.title : 'Без лекції' }}</p>
+                            <p>{{ $t("lectures.lecture") }}: {{ task.lecture.id ? task.lecture.title : $t("lectures.no_lecture") }}</p>
                         </div>
                         <div class="col-3">
                              <p>{{ $t("tasks.deadline") }}:<br>{{ task.deadline }}</p>

@@ -155,7 +155,8 @@ export default {
             deleted: 'deleted successfully',
             choose_course: 'Choose a course',
             lecture_edit: 'Edit lecture',
-            lecture_add: 'Create lecture'
+            lecture_add: 'Create lecture',
+            no_lecture: 'No lecture'
         },
         tasks: {
             tasks: 'Task',
@@ -380,7 +381,8 @@ export default {
           deleted: 'успішно видалена',
           choose_course: 'Вибрати курс',
           lecture_edit: 'Редагувати лекцію',
-          lecture_add: 'Створення лекції'
+          lecture_add: 'Створення лекції',
+          no_lecture: 'Без лекції'
       },
       tasks: {
           tasks: 'Завдання',
