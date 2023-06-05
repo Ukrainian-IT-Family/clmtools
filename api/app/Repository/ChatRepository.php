@@ -33,7 +33,7 @@ final class ChatRepository
         return $chat;
     }
 
-    public function getChatByLectureId(int $user_id, int $lecture_id): Chat
+    public function getChatByLectureId(int $user_id, int $lecture_id): ?Chat
     {
         $chat = Chat::where([
             ['user_id', $user_id],
@@ -41,7 +41,7 @@ final class ChatRepository
         ])->first();
 
         if (!$chat) {
-            throw new ChatNotFoundException();
+            $chat = null;
         }
 
         return $chat;
