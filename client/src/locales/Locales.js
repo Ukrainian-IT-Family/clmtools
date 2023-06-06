@@ -155,7 +155,8 @@ export default {
             deleted: 'deleted successfully',
             choose_course: 'Choose a course',
             lecture_edit: 'Edit lecture',
-            lecture_add: 'Create lecture'
+            lecture_add: 'Create lecture',
+            no_lecture: 'No lecture'
         },
         tasks: {
             tasks: 'Task',
@@ -222,6 +223,12 @@ export default {
             two_year: 'years',
             lot_year: 'years',
             ago: 'ago'
+        },
+        notifications: {
+            title: 'Notifications',
+            remove_all: 'Remove all',
+            follow_the_link: 'Follow the link',
+            empty: 'There are no new notifications.',
         }
     },
     ua: {
@@ -380,7 +387,8 @@ export default {
           deleted: 'успішно видалена',
           choose_course: 'Вибрати курс',
           lecture_edit: 'Редагувати лекцію',
-          lecture_add: 'Створення лекції'
+          lecture_add: 'Створення лекції',
+          no_lecture: 'Без лекції'
       },
       tasks: {
           tasks: 'Завдання',
@@ -447,6 +455,12 @@ export default {
           two_year: 'роки',
           lot_year: 'років',
           ago: 'тому'
+      },
+      notifications: {
+          title: 'Сповіщення',
+          remove_all: 'Видалити всі1',
+          follow_the_link: 'Перейти',
+          empty: 'Нових оповіщень немає.',
       }
     }
 };

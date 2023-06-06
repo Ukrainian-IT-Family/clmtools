@@ -19,9 +19,6 @@ final class ChangePasswordValidationRequest extends ApiFormRequest
         return [
             'old_password' => [
                 'required',
-                Password::min(8)
-                    ->mixedCase()
-                    ->numbers(),
                 'string'
             ],
             'new_password' => [

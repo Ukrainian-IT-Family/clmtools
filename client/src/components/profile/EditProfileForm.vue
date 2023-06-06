@@ -218,12 +218,12 @@
       :title="$t('auth.password_change')"
     >
       <div class="form-control-file">
-        <BAlert show variant="success" v-if="successChangePassword"
-          >{{ $t('message.pass_changed') }}</BAlert
-        >
-        <BAlert show variant="danger" v-if="passErrors">{{
-          passErrors
-        }}</BAlert>
+        <BAlert show variant="success" v-if="successChangePassword">
+            {{ $t('message.pass_changed') }}
+        </BAlert>
+        <BAlert show variant="danger" v-if="passErrors">
+            {{ passErrors }}
+        </BAlert>
 
         <BFormGroup>
           <BFormInput
@@ -401,7 +401,7 @@ export default {
     async onChangePassword() {
       await this.CHANGE_PASSWORD(this.ChangePass)
         .then(() => {
-          this.passErrors = {};
+          this.passErrors = '';
           this.successChangePassword = true;
           setTimeout(() => {
             this.$refs['change-password-modal'].hide();
@@ -412,6 +412,8 @@ export default {
         .catch(error => {
           if (error.response.data.errors) {
             this.passErrors = Object.values(error.response.data.errors).join('\r\n');
+          } else if(error.message) {
+            this.passErrors = error.message;
           }
         });
     },

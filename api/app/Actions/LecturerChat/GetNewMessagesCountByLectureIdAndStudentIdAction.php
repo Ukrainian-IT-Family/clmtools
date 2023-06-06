@@ -17,9 +17,12 @@ final class GetNewMessagesCountByLectureIdAndStudentIdAction
         $chatRepository = $this->chatRepository;
         $chat = $chatRepository->getChatByLectureId($student_id, $lecture_id);
 
-        $count = $chat->messages()
-            ->where('read_by_lecturer', false)
-            ->get()->count();
+        $count = 0;
+        if($chat) {
+            $count = $chat->messages()
+                ->where('read_by_lecturer', false)
+                ->get()->count();
+        }
 
         return $count;
     }

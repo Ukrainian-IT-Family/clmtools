@@ -19,7 +19,7 @@
                         </div>
                         <div v-if="isAnswered">
                             <p>
-                              {{ $t('tasks.answer') }}: {{ this.GET_ANSWER_INFO_ELEMENT.answer }} <br>
+                              {{ $t('tasks.answer') }}: {{ this.answer ? this.answer : this.GET_ANSWER_INFO_ELEMENT.answer }} <br>
                             </p>
                             <p class="alert alert-success">
                               {{ $t('message.answer_send') }}
