@@ -223,6 +223,12 @@ export default {
             two_year: 'years',
             lot_year: 'years',
             ago: 'ago'
+        },
+        notifications: {
+            title: 'Notifications',
+            remove_all: 'Remove all',
+            follow_the_link: 'Follow the link',
+            empty: 'There are no new notifications.',
         }
     },
     ua: {
@@ -449,6 +455,12 @@ export default {
           two_year: 'роки',
           lot_year: 'років',
           ago: 'тому'
+      },
+      notifications: {
+          title: 'Сповіщення',
+          remove_all: 'Видалити всі1',
+          follow_the_link: 'Перейти',
+          empty: 'Нових оповіщень немає.',
       }
     }
 };
