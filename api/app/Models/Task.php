@@ -86,7 +86,7 @@ class Task extends Model
         return $this->users->filter(function ($user)
         {
             return $user->pivot->answer != null;
-        })->map->only($this->studentsColumns)->toArray();
+        })->map->only($this->studentsColumns)->values()->toArray();
     }
 
     public function getRatedStudents(): array
@@ -94,6 +94,6 @@ class Task extends Model
         return $this->users->filter(function ($user)
         {
             return $user->pivot->rating > 0;
-        })->map->only($this->studentsColumns)->toArray();
+        })->map->only($this->studentsColumns)->values()->toArray();
     }
 }
