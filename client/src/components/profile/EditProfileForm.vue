@@ -437,24 +437,6 @@ export default {
       this.$refs['upload-image-modal'].hide();
     },
 
-    // selectImage() {
-    //   this.$refs['fileInput'].click();
-    // },
-
-    // pickFile() {
-    //   let input = this.$refs.fileInput;
-    //   let file = input.files;
-    //   if (file && file[0]) {
-    //     let reader = new FileReader();
-    //     reader.onload = e => {
-    //       this.preview = e.target.result;
-    //       this.image = file[0];
-    //     };
-    //     reader.readAsDataURL(file[0]);
-    //     this.$emit('fileInput', file[0]);
-    //   }
-    // },
-
     async uploadAvatar() {
       await this.UPDATE_PROFILE_IMAGE(this.image)
         .then(() => {
