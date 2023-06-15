@@ -99,7 +99,10 @@ export default {
             university: 'University',
             pass_year: 'Pass year',
             old_password: 'Old password',
-            confirm_new_pass: 'Confirm new password'
+            confirm_new_pass: 'Confirm new password',
+            select_area: 'Select area',
+            cancel: 'Cancel',
+            selected_file: 'Selected File:',
         },
         index : {
             null_welcome: 'You have successfully logged into the system!\nWait, soon you will be granted access!',
@@ -332,6 +335,9 @@ export default {
           pass_year: 'Рік випуску',
           old_password: 'Старий пароль',
           confirm_new_pass: 'Підтвердження нового пароля',
+          select_area: 'Виберати область',
+          cancel: 'Скасувати',
+          selected_file: 'Вибраний файл:',
       },
       index : {
           null_welcome: 'Ви успішно авторизувалися в системі!\nЗачекайте, невдовзі Вам нададуть доступ!',

@@ -14,7 +14,7 @@
       </p>
 
       <button v-else class="btn btn-blue w-32 mx-2" @click="handleImageCropped">
-        Select area
+          {{ $t("auth.select_area") }}
       </button>
       <button
         button
@@ -22,7 +22,7 @@
         class="btn btn-gray w-32 mx-2"
         @click="fileCleared"
       >
-        Cancel
+        {{ $t("auth.cancel") }}
       </button>
       <input
         type="file"
@@ -33,7 +33,7 @@
       />
     </div>
     <div v-if="selectedFile" class="my-2 align-baseline text-center">
-      <span>Selected File: </span>
+      <span>{{ $t("auth.selected_file") }} </span>
       <span>{{ selectedFile.name }}</span>
     </div>
   </div>
