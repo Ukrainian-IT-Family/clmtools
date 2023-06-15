@@ -172,28 +172,18 @@
         <h3>{{ $t("buttons.photo_edit") }}</h3>
       </div>
       <div class="form-control-file">
-        <div
+        <div v-if="preview"
           class="imagePreviewWrapper"
           :style="{ 'background-image': `url(${preview})` }"
-          @click="selectImage"
         ></div>
-        <p class="mt-2 text-center" @click="selectImage">
-          <BIcon icon="cloud-arrow-up"></BIcon>
-          <b>{{ image ? image.name : $t("buttons.choose_photo") + ' (jpeg, png, 5MB)' }}</b>
-        </p>
-        <input
-          type="file"
-          @input="pickFile"
-          class="d-none"
-          ref="fileInput"
-          accept=".jpg, .png, .jpeg"
-        />
+
         <BAlert show variant="success" v-if="successUploadImage"
           >{{ $t("message.save_photo") }}</BAlert
         >
         <BAlert show variant="danger" v-if="imageErrors.message">{{
           imageErrors.message
         }}</BAlert>
+        <ImageCropper @imageCropped="handleImageCropped"></ImageCropper>
       </div>
       <div class="mt-3">
         <BRow>
@@ -268,15 +258,15 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
-import { emptyUser } from '@/services/Normalizer';
+import {mapActions, mapGetters} from 'vuex';
+import {emptyUser} from '@/services/Normalizer';
 import moment from 'moment';
 import methods from '@/components/methods/methods';
-import { CHANGE_PASSWORD } from '../../store/modules/auth/types/actions';
+import ImageCropper from "./ImageCropper";
 
 export default {
   name: 'EditProfileForm',
-
+  components: { ImageCropper },
   mixins: [methods],
 
   computed: {
@@ -378,6 +368,10 @@ export default {
     ]),
 
     ...mapActions('handbook', ['GET_CITIES', 'GET_UNIVERSITIES']),
+    handleImageCropped(blob) {
+      this.image = blob;
+      this.preview = URL.createObjectURL(blob);
+    },
 
     getCitiesList() {
       this.GET_CITIES()
@@ -441,24 +435,6 @@ export default {
 
     hideModal() {
       this.$refs['upload-image-modal'].hide();
-    },
-
-    selectImage() {
-      this.$refs['fileInput'].click();
-    },
-
-    pickFile() {
-      let input = this.$refs.fileInput;
-      let file = input.files;
-      if (file && file[0]) {
-        let reader = new FileReader();
-        reader.onload = e => {
-          this.preview = e.target.result;
-          this.image = file[0];
-        };
-        reader.readAsDataURL(file[0]);
-        this.$emit('fileInput', file[0]);
-      }
     },
 
     async uploadAvatar() {
