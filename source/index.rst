@@ -1,10 +1,10 @@
-.. CLM Tools Client documentation master file, created by
-   sphinx-quickstart on Wed Jun 21 00:58:58 2023.
+.. CLM Tools documentation master file, created by
+   sphinx-quickstart on Wed Jun 21 01:07:50 2023.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to CLM Tools Client's documentation!
-============================================
+Welcome to CLM Tools's documentation!
+=====================================
 
 .. toctree::
    :maxdepth: 2
