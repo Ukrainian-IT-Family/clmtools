@@ -29,5 +29,4 @@ final class ResetPasswordAction
         if($response != Password::PASSWORD_RESET)
             throw new InvalidResetPasswordTokenException();
     }
-
 }

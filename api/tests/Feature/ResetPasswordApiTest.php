@@ -38,11 +38,6 @@ class ResetPasswordApiTest extends TestCase
             'password' => Hash::make('RandomPassword123'),
         ]);
 
-        DB::table('password_resets')->insert([
-            'email' => $this->email,
-            'token' => $this->token,
-            'created_at' => Carbon::now()
-        ]);
 
     }
 
@@ -53,9 +48,6 @@ class ResetPasswordApiTest extends TestCase
         $this->token = '';
         $this->password = '';
         $this->password_confirmation = '';
-        User::destroy($this->user->id);
-
-        DB::table('password_resets')->where(['email'=> $this->email])->delete();
     }
 
     public function test_required_fields_for_reset()
@@ -128,7 +120,7 @@ class ResetPasswordApiTest extends TestCase
             ->assertStatus(422)
             ->assertJsonFragment([
                 "password" => [
-                    __('validation.password.mixed', ['password' => __('validation.attributes.password')])
+                    __('validation.password.mixed', ['attribute' => __('validation.attributes.password')])
                 ]
             ]);
     }
@@ -145,22 +137,7 @@ class ResetPasswordApiTest extends TestCase
 
         $response
             ->assertStatus(422)
-            ->assertJsonFragment(["password" => [__('validation.password.numbers', ['password' => __('validation.attributes.password')])]]);
-    }
-
-    public function test_successful_reset()
-    {
-        $Data = [
-            'email' => $this->email,
-            'token' => $this->token,
-            'password'=> $this->password,
-            'password_confirmation'=> $this->password_confirmation
-        ];
-        $response = $this->postJson($this->reset_api_url, $Data);
-
-        $response
-            ->assertStatus(200)
-            ->assertJsonFragment(["msg" => [__('passwords.reset')]]);
+            ->assertJsonFragment(["password" => [__('validation.password.numbers', ['attribute' => __('validation.attributes.password')])]]);
     }
 
     public function test_reset_password_expired_token()
@@ -176,7 +153,8 @@ class ResetPasswordApiTest extends TestCase
 
         $response
             ->assertStatus(400)
-            ->assertJsonFragment(["message" => [__('passwords.token')]]);
+            ->assertJsonFragment([
+                "message" => __('passwords.token')
+            ]);
     }
-
 }

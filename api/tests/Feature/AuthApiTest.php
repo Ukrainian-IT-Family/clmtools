@@ -68,18 +68,24 @@ class AuthApiTest extends TestCase
 
         $response
             ->assertStatus(422)
-            ->assertJsonFragment(['email' => ["The email must be a valid email address."]]);
+            ->assertJsonFragment(['email' => ["The e-mail must be a valid email address."]]);
     }
 
     public function test_incorrect_password()
     {
         $response = $this->postJson($this->api_url, [
             'email' => $this->email,
-            'password' => Str::random(7),
+            'password' => 'asd',
         ]);
 
         $response
             ->assertStatus(422)
-            ->assertJsonFragment(['password' => ["The password must be at least 8 characters."]]);
+            ->assertJsonFragment([
+                'password' => [
+                    "The password must be at least 8 characters.",
+                    "The password must contain at least one number.",
+                    "The password must contain at least one uppercase and one lowercase letter."
+                ]
+            ]);
     }
 }

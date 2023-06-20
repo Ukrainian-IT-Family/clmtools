@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -18,7 +17,6 @@ class RegistrationApiTest extends TestCase
     use RefreshDatabase;
 
     private string $register_api_url;
-    private string $resend_url;
     private mixed $user;
     private mixed $user_not_verified;
     private mixed $user_not_verified_two;
@@ -28,7 +26,6 @@ class RegistrationApiTest extends TestCase
         parent::setUp();
 
         $this->register_api_url = 'api/v1/auth/register';
-        $this->resend_url = 'api/v1/email/resend';
 
         $this->user = User::factory()->create([
             'name' => 'Test',
@@ -68,7 +65,7 @@ class RegistrationApiTest extends TestCase
                 "errors" => [
                     "name" => ["The name field is required."],
                     "last_name" => ["The last name field is required."],
-                    "email" => ["The email field is required."],
+                    "email" => ["The e-mail field is required."],
                     "phone" => ["The phone field is required."],
                     "password" => ["The password field is required."],
                 ]
@@ -90,7 +87,7 @@ class RegistrationApiTest extends TestCase
 
         $response
             ->assertStatus(422)
-            ->assertJsonFragment(["email" => ["The email has already been taken."]]);
+            ->assertJsonFragment(["email" => ["The e-mail has already been taken."]]);
     }
 
     public function test_phone_already_taken()
@@ -186,7 +183,7 @@ class RegistrationApiTest extends TestCase
 
         $response
             ->assertStatus(422)
-            ->assertJsonFragment(["email" => ["The email must be a valid email address."]]);
+            ->assertJsonFragment(["email" => ["The e-mail must be a valid email address."]]);
     }
 
     public function test_incorrect_name_and_last_name()
@@ -245,7 +242,7 @@ class RegistrationApiTest extends TestCase
         $user = User::find($this->user_not_verified->id);
         Auth::login($user);
 
-        $response = $this->postJson($this->resend_url);
+        $response = $this->postJson(route('verification.resend', ['id' => $this->user_not_verified->id]));
 
         $response
             ->assertStatus(200)
@@ -261,7 +258,7 @@ class RegistrationApiTest extends TestCase
         $user = User::find($this->user->id);
         Auth::login($user);
 
-        $response = $this->postJson($this->resend_url);
+        $response = $this->postJson(route('verification.resend', ['id' => $this->user->id]));
 
         $response
             ->assertStatus(400)

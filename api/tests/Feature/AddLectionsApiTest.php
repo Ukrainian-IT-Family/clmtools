@@ -68,7 +68,9 @@ class AddLectionsApiTest extends TestCase
         ]);
 
         $response
-            ->assertJsonFragment(['message' => __('authorize.forbidden_by_role')])
+            ->assertJsonFragment([
+                'error' => __('authorize.forbidden_by_role')
+            ])
             ->assertStatus(400);
     }
 
@@ -94,7 +96,13 @@ class AddLectionsApiTest extends TestCase
 
         $response
             ->assertStatus(422)
-            ->assertJsonFragment(['message' => __('validation.required')]);
+            ->assertJsonFragment([
+                'errors' => [
+                    'user_id' => [
+                        __('validation.required', ['attribute' => 'user id'])
+                    ]
+                ]
+            ]);
     }
 
     public function test_create_lecture_incorrect_course_id()
@@ -110,6 +118,10 @@ class AddLectionsApiTest extends TestCase
 
         $response
             ->assertStatus(422)
-            ->assertJsonFragment(['message' => __('validation.numeric')]);
+            ->assertJsonFragment([
+                'errors' => [
+                    'course_id' => [__('validation.numeric', ['attribute' => 'course id'])]
+                ]
+            ]);
     }
 }

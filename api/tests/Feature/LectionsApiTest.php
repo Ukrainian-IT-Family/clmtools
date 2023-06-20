@@ -16,7 +16,6 @@ class LectionsApiTest extends TestCase
     private $title;
     private $user;
 
-
     public function setUp(): void
     {
         parent::setUp();
@@ -28,10 +27,19 @@ class LectionsApiTest extends TestCase
             'password' => Hash::make('Ye4oKoEa3Ro9llC'),
         ]);
 
-        $this->lecture = Lecture::factory()->create([
-            'author_id' => $this->user->id,
-            'title' => $this->title,
+        $this->lecturer = \App\Models\User::factory()->create([
+            'role' => UserRole::LECTURER
         ]);
+        $this->course = \App\Models\Course::factory()->create([
+            'author_id' => $this->lecturer->id
+        ]);
+
+        $this->lecture = Lecture::factory()->create([
+            'author_id' => $this->lecturer->id,
+            'title' => $this->title,
+            'course_id' => $this->course->id,
+        ]);
+
         $this->lecture_url = route('lecture', ['id' => $this->lecture->id]);
     }
 
@@ -54,8 +62,8 @@ class LectionsApiTest extends TestCase
 
     public function test_getting_collection_lectures()
     {
-        $this->actingAs($this->user);
-        $this->lecture_collection_url = '/api/v1/user-lectures/'. $this->user->id;
+        $this->actingAs($this->lecturer);
+        $this->lecture_collection_url = '/api/v1/user-lectures/'. $this->lecturer->id;
         $response = $this->postJson($this->lecture_collection_url);
 
         $response
@@ -75,12 +83,11 @@ class LectionsApiTest extends TestCase
     public function test_empty_user_lectures()
     {
         $this->actingAs($this->user);
-        $this->lecture_collection_url = '/api/v1/user-lectures/9999999';
+        $this->lecture_collection_url = '/api/v1/user-lectures/';
         $response = $this->postJson($this->lecture_collection_url);
 
         $response
-            ->assertStatus(200)
-            ->assertJsonFragment([]);
+            ->assertStatus(404);
     }
 
     public function test_incorrect_id()

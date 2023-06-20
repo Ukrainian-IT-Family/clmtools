@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class ForgotPasswordApiTest extends TestCase
 {
-    use RefreshDatabase;
+    //use RefreshDatabase;
 
     private string $forgot_api_url;
     private string $email;
@@ -33,8 +33,8 @@ class ForgotPasswordApiTest extends TestCase
 
     public function TearDown(): void
     {
-        $this->forgot_api_url = null;
-        $this->email = null;
+        $this->forgot_api_url = '';
+        $this->email = '';
         User::destroy($this->user->id);
     }
 
@@ -51,6 +51,8 @@ class ForgotPasswordApiTest extends TestCase
 
     public function test_user_not_exist()
     {
+        User::destroy($this->user->id);
+
         $response = $this->postJson($this->forgot_api_url, [
             'email' => $this->user->email
         ]);
