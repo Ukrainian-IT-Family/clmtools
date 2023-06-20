@@ -22,8 +22,8 @@ class EditLectionsApiTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
+
         $this->title = 'Test title for manual testing';
-        $this->lecture_url = route('edit.lecture');
         $this->link = 'https://www.youtube.com/watch?v=ZUMQEkoF1_c';
         $this->lecturer = \App\Models\User::factory()->create([
             'role' => UserRole::LECTURER
@@ -38,6 +38,7 @@ class EditLectionsApiTest extends TestCase
         $this->student = \App\Models\User::factory()->create([
             'role' => UserRole::STUDENT
         ]);
+        $this->lecture_url = route('edit.lecture', ['id' => $this->lection->id]);
     }
 
     public function tearDown(): void
@@ -48,7 +49,7 @@ class EditLectionsApiTest extends TestCase
     public function test_update_lecture()
     {
         $this->actingAs($this->lecturer);
-        $response = $this->putJson($this->lecture_url . $this->lection->id, [
+        $response = $this->putJson($this->lecture_url, [
             'title' => $this->title,
             'description' => $this->title,
             'link' => $this->link,
@@ -64,7 +65,7 @@ class EditLectionsApiTest extends TestCase
     public function test_student_update_lecture()
     {
         $this->actingAs($this->student);
-        $response = $this->putJson($this->lecture_url . $this->lection->id, [
+        $response = $this->putJson($this->lecture_url, [
             'title' => $this->title,
             'description' => $this->title,
             'link' => $this->link,
@@ -73,13 +74,13 @@ class EditLectionsApiTest extends TestCase
         ]);
 
         $response
-            ->assertJsonFragment(['message' => __('authorize.forbidden_by_role')])
+            ->assertJsonFragment(['error' => __('authorize.forbidden_by_role')])
             ->assertStatus(400);
     }
 
     public function test_unauthorized_update_lecture()
     {
-        $response = $this->putJson($this->lecture_url . $this->lection->id);
+        $response = $this->putJson($this->lecture_url);
 
         $response
             ->assertJsonFragment(['error' => __('authorize.unauthorized')])
@@ -89,7 +90,7 @@ class EditLectionsApiTest extends TestCase
     public function test_update_lecture_with_empty_users()
     {
         $this->actingAs($this->lecturer);
-        $response = $this->putJson($this->lecture_url . $this->lection->id, [
+        $response = $this->putJson($this->lecture_url, [
             'title' => $this->title,
             'description' => $this->title,
             'link' => $this->link,
@@ -99,7 +100,13 @@ class EditLectionsApiTest extends TestCase
 
         $response
             ->assertStatus(422)
-            ->assertJsonFragment(['message' => __('validation.required')]);
+            ->assertJsonFragment([
+                'errors' => [
+                    'user_id' => [
+                        __('validation.required', ['attribute' => 'user id'])
+                    ]
+                ]
+            ]);
     }
 
 }

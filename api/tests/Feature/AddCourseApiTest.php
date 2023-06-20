@@ -85,7 +85,13 @@ class AddCourseApiTest extends TestCase
 
         $response
             ->assertStatus(422)
-            ->assertJsonFragment(['error' => __('validation.required')]);
+            ->assertJsonFragment([
+                'errors' => [
+                    'user_id' => [
+                        __('validation.required', ['attribute' => 'user id'])
+                    ]
+                ]
+            ]);
     }
 
 }

@@ -20,7 +20,7 @@ class DeleteLectionsApiTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->lecture_url = route('delete.lecture');
+
         $this->lecturer = \App\Models\User::factory()->create([
             'role' => UserRole::LECTURER
         ]);
@@ -34,6 +34,7 @@ class DeleteLectionsApiTest extends TestCase
         $this->student = \App\Models\User::factory()->create([
             'role' => UserRole::STUDENT
         ]);
+        $this->lecture_url = route('delete.lecture', ['id' => $this->lection->id]);
     }
 
     public function tearDown(): void
@@ -44,7 +45,7 @@ class DeleteLectionsApiTest extends TestCase
     public function test_delete_lecture()
     {
         $this->actingAs($this->lecturer);
-        $response = $this->deleteJson($this->lecture_url . $this->lection->id);
+        $response = $this->deleteJson($this->lecture_url);
 
         $response
             ->assertStatus(200)
@@ -54,16 +55,16 @@ class DeleteLectionsApiTest extends TestCase
     public function test_student_delete_lecture()
     {
         $this->actingAs($this->student);
-        $response = $this->deleteJson($this->lecture_url . $this->lection->id);
+        $response = $this->deleteJson($this->lecture_url);
 
         $response
-            ->assertJsonFragment(['message' => __('authorize.forbidden_by_role')])
+            ->assertJsonFragment(['error' => __('authorize.forbidden_by_role')])
             ->assertStatus(400);
     }
 
     public function test_unauthorized_delete_lecture()
     {
-        $response = $this->deleteJson($this->lecture_url . $this->lection->id);
+        $response = $this->deleteJson($this->lecture_url);
 
         $response
             ->assertJsonFragment(['error' => __('authorize.unauthorized')])

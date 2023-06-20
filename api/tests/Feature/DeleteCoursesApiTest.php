@@ -36,14 +36,13 @@ class DeleteCoursesApiTest extends TestCase
         $this->refreshApplication();
     }
 
-    public function test_delete_course()
+    public function test_unauthorized_delete_course()
     {
-        $this->actingAs($this->lecturer);
         $response = $this->deleteJson($this->course_url);
 
         $response
-            ->assertStatus(200)
-            ->assertJsonFragment(['message' => __('course.deleted')]);
+            ->assertJsonFragment(['error' => __('authorize.unauthorized')])
+            ->assertStatus(400);
     }
 
     public function test_student_delete_course()
@@ -56,12 +55,13 @@ class DeleteCoursesApiTest extends TestCase
             ->assertStatus(400);
     }
 
-    public function test_unauthorized_delete_course()
+    public function test_delete_course()
     {
+        $this->actingAs($this->lecturer);
         $response = $this->deleteJson($this->course_url);
 
         $response
-            ->assertJsonFragment(['error' => __('authorize.unauthorized')])
-            ->assertStatus(400);
+            ->assertStatus(200)
+            ->assertJsonFragment(['message' => __('course.deleted')]);
     }
 }
