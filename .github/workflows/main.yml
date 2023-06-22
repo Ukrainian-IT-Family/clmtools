@@ -13,7 +13,7 @@ jobs:
 
             - name: In docker container run
               run: |
-                  cd clm-tools.online/api
+                  cd api
                   cp .env.example .env
                   cp .env.testing.example .env.testing
                   docker-compose up -d
