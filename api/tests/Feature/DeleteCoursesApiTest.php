@@ -28,12 +28,7 @@ class DeleteCoursesApiTest extends TestCase
         $this->student = \App\Models\User::factory()->create([
             'role' => UserRole::STUDENT
         ]);
-        $this->course_url = route('delete.course', $this->course->id);
-    }
-
-    public function tearDown(): void
-    {
-        $this->refreshApplication();
+        $this->course_url = route('delete.course', ['id' => $this->course->id]);
     }
 
     public function test_unauthorized_delete_course()

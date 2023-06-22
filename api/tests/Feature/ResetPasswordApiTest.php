@@ -37,17 +37,6 @@ class ResetPasswordApiTest extends TestCase
             'phone' => '380951122333',
             'password' => Hash::make('RandomPassword123'),
         ]);
-
-
-    }
-
-    public function TearDown(): void
-    {
-        $this->reset_api_url = '';
-        $this->email = '';
-        $this->token = '';
-        $this->password = '';
-        $this->password_confirmation = '';
     }
 
     public function test_required_fields_for_reset()

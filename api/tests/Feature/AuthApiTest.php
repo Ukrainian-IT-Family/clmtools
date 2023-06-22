@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 use App\Models\User;
@@ -9,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthApiTest extends TestCase
 {
+    use RefreshDatabase;
+
     private $email;
     private $password;
     private $api_url;
@@ -25,14 +28,6 @@ class AuthApiTest extends TestCase
             'email' => Str::random(5).'@'.Str::random(5).'.com',
             'password' => Hash::make($this->password),
         ]);
-    }
-
-    public function tearDown(): void
-    {
-        $this->email = null;
-        $this->password = null;
-        $this->api_url = null;
-        User::destroy($this->user->id);
     }
 
     public function test_existing_user()

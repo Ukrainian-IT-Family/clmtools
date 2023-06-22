@@ -25,7 +25,6 @@ class ChatWithTeacherApiTest extends TestCase
 
     private string $auth_token;
 
-
     public function setUp(): void
     {
         parent::setUp();
@@ -84,7 +83,7 @@ class ChatWithTeacherApiTest extends TestCase
     public function test_create_chat()
     {
         $chatData = [
-            "lecture_id" => 1
+            "lecture_id" => $this->lecture->id
         ];
         $response = $this->postJson($this->chat_api_url, $chatData, [
             'Authorization' => 'Bearer ' . $this->auth_token

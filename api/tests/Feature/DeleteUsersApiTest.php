@@ -31,11 +31,6 @@ class DeleteUsersApiTest extends TestCase
         $this->url = route('delete.user', ['id' => $this->student->id]);
     }
 
-    public function tearDown(): void
-    {
-        $this->refreshApplication();
-    }
-
     public function test_delete_user_by_admin()
     {
         $this->actingAs($this->admin);

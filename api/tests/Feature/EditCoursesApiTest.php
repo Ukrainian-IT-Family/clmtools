@@ -9,6 +9,8 @@ use App\Enums\UserRole;
 
 class EditCoursesApiTest extends TestCase
 {
+    use RefreshDatabase;
+
     private $course_url;
     private $title;
     private $student;
@@ -28,15 +30,7 @@ class EditCoursesApiTest extends TestCase
         $this->student = \App\Models\User::factory()->create([
             'role' => UserRole::STUDENT
         ]);
-        $this->course_url = route('edit.course', $this->course->id);
-    }
-
-    public function tearDown(): void
-    {
-        $this->refreshApplication();
-        User::destroy($this->lecturer->id);
-        Course::destroy($this->course->id);
-        User::destroy($this->student->id);
+        $this->course_url = route('edit.course', ['id' => $this->course->id]);
     }
 
     public function test_update_course()

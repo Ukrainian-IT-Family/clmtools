@@ -4,12 +4,15 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class UploadProfileImageApiTest extends TestCase
 {
+    use RefreshDatabase;
+
     private string $api_url;
     private mixed $file;
     private mixed $user;
@@ -28,13 +31,6 @@ class UploadProfileImageApiTest extends TestCase
             'password' => Hash::make('RandomPassword123'),
             'email_verified_at' => Carbon::now(),
         ]);
-    }
-
-    public function TearDown(): void
-    {
-        $this->api_url = '';
-        $this->file = null;
-        User::destroy($this->user->id);
     }
 
     public function test_image_upload_success()

@@ -43,8 +43,7 @@ final class LectureRepository
 
     public function attach(Lecture $lecture, array $arr_user_id): void
     {
-        $this->detach($lecture);
-        $lecture->users()->attach(User::find($arr_user_id));
+        $lecture->users()->sync($arr_user_id);
     }
 
     public function detach(Lecture $lecture): void

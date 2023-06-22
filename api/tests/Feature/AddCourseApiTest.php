@@ -35,11 +35,6 @@ class AddCourseApiTest extends TestCase
         ]);
     }
 
-    public function tearDown(): void
-    {
-        $this->refreshApplication();
-    }
-
     public function test_create_course()
     {
         $this->actingAs($this->lecturer);

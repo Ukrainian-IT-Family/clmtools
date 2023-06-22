@@ -35,11 +35,6 @@ class AddLectionsApiTest extends TestCase
         ]);
     }
 
-    public function tearDown(): void
-    {
-        $this->refreshApplication();
-    }
-
     public function test_create_lecture()
     {
         $this->actingAs($this->lecturer);

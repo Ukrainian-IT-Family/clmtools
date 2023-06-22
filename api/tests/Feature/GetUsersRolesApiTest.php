@@ -33,11 +33,6 @@ class GetUsersRolesApiTest extends TestCase
         $this->url = route('get.roles');
     }
 
-    public function tearDown(): void
-    {
-        $this->refreshApplication();
-    }
-
     public function test_getting_users_roles_by_admin()
     {
         $this->actingAs($this->admin);
