@@ -5,14 +5,44 @@ on:
             - master
 
 jobs:
-    deploy:
+    test:
         runs-on: ubuntu-latest
-
         steps:
             - name: Checkout
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
+
+            - name: In docker container run
+              with:
+                  script: |
+                      cd clm-tools.online/api
+                      cp .env.example .env
+                      cp .env.testing.example .env.testing
+                      docker-compose up -d
+                      docker exec -it clm-app composer install
+                      docker exec -it clm-app php artisan key:generate
+                      docker exec -it clm-app php artisan migrate
+                      docker exec -it clm-app php artisan migrate --env=testing
+            - name: Run Tests
+              run: |
+                  docker exec -it clm-app ./vendor/bin/phpunit ./tests/Feature/
 
             - name: Upload coverage reports to Codecov
               uses: codecov/codecov-action@v3
               env:
                   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+    build:
+        runs-on: ubuntu-latest
+        needs: [test]
+        steps:
+            - name: Deploy
+              uses: appleboy/ssh-action@v0.1.10
+              with:
+                  host: ${{ secrets.HOST }}
+                  username: ${{ secrets.USERNAME }}
+                  password: ${{ secrets.PASSWORD }}
+                  port: ${{ secrets.PORT }}
+                  script: |
+                      git pull origin main
+                      cd clm-tools.online/api
+                      docker-compose build && docker-compose down && docker-compose up -d
