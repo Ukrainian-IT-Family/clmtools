@@ -12,16 +12,15 @@ jobs:
               uses: actions/checkout@v3
 
             - name: In docker container run
-              with:
-                  script: |
-                      cd clm-tools.online/api
-                      cp .env.example .env
-                      cp .env.testing.example .env.testing
-                      docker-compose up -d
-                      docker exec -it clm-app composer install
-                      docker exec -it clm-app php artisan key:generate
-                      docker exec -it clm-app php artisan migrate
-                      docker exec -it clm-app php artisan migrate --env=testing
+              run: |
+                  cd clm-tools.online/api
+                  cp .env.example .env
+                  cp .env.testing.example .env.testing
+                  docker-compose up -d
+                  docker exec -it clm-app composer install
+                  docker exec -it clm-app php artisan key:generate
+                  docker exec -it clm-app php artisan migrate
+                  docker exec -it clm-app php artisan migrate --env=testing
             - name: Run Tests
               run: |
                   docker exec -it clm-app ./vendor/bin/phpunit ./tests/Feature/
