@@ -49,11 +49,6 @@ class GetTasksApiTest extends TestCase
         $this->url = route('get.tasks');
     }
 
-    public function tearDown(): void
-    {
-        $this->refreshApplication();
-    }
-
     public function test_getting_users_by_lecturer()
     {
         $this->actingAs($this->lecturer);

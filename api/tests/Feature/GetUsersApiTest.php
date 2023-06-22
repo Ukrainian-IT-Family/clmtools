@@ -33,11 +33,6 @@ class GetUsersApiTest extends TestCase
         $this->url = route('get.users');
     }
 
-    public function tearDown(): void
-    {
-        $this->refreshApplication();
-    }
-
     public function test_getting_users_by_admin()
     {
         $this->actingAs($this->admin);

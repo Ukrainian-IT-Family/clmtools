@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class ForgotPasswordApiTest extends TestCase
 {
-    //use RefreshDatabase;
+    use RefreshDatabase;
 
     private string $forgot_api_url;
     private string $email;
@@ -29,13 +29,6 @@ class ForgotPasswordApiTest extends TestCase
             'phone' => '380951122333',
             'password' => Hash::make('RandomPassword123'),
         ]);
-    }
-
-    public function TearDown(): void
-    {
-        $this->forgot_api_url = '';
-        $this->email = '';
-        User::destroy($this->user->id);
     }
 
     public function test_forgot_email_send_success()

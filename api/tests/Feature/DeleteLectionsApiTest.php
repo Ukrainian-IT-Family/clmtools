@@ -37,11 +37,6 @@ class DeleteLectionsApiTest extends TestCase
         $this->lecture_url = route('delete.lecture', ['id' => $this->lection->id]);
     }
 
-    public function tearDown(): void
-    {
-        $this->refreshApplication();
-    }
-
     public function test_delete_lecture()
     {
         $this->actingAs($this->lecturer);

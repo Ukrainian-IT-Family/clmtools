@@ -33,11 +33,6 @@ class EditUsersApiTest extends TestCase
         $this->url = route('edit.user', ['id' => $this->student->id]);
     }
 
-    public function tearDown(): void
-    {
-        $this->refreshApplication();
-    }
-
     public function test_edit_user_by_admin()
     {
         $this->actingAs($this->admin);

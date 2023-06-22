@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\{User, Lecture};
 use Illuminate\Support\Facades\Hash;
@@ -9,6 +10,8 @@ use App\Enums\UserRole;
 
 class LectionsApiTest extends TestCase
 {
+    use RefreshDatabase;
+
     private $lecture_collection_url;
     private $non_number_lecture_url;
     private $lecture_url;
@@ -41,13 +44,6 @@ class LectionsApiTest extends TestCase
         ]);
 
         $this->lecture_url = route('lecture', ['id' => $this->lecture->id]);
-    }
-
-    public function tearDown(): void
-    {
-        Lecture::destroy($this->lecture->id);
-        User::destroy($this->user->id);
-        $this->refreshApplication();
     }
 
     public function test_getting_lecture()

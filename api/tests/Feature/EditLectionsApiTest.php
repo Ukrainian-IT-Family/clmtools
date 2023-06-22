@@ -38,18 +38,16 @@ class EditLectionsApiTest extends TestCase
         $this->student = \App\Models\User::factory()->create([
             'role' => UserRole::STUDENT
         ]);
-        $this->lecture_url = route('edit.lecture', ['id' => $this->lection->id]);
-    }
 
-    public function tearDown(): void
-    {
-        $this->refreshApplication();
+        $this->lection->users()->attach($this->student);
+
+        $this->lecture_url = route('edit.lecture', ['id' => $this->lection->id]);
     }
 
     public function test_update_lecture()
     {
         $this->actingAs($this->lecturer);
-        $response = $this->putJson($this->lecture_url, [
+        $response = $this->putJson(route('edit.lecture', ['id' => $this->lection->id]), [
             'title' => $this->title,
             'description' => $this->title,
             'link' => $this->link,
