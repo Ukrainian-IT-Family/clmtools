@@ -45,7 +45,7 @@ jobs:
                       cd clm-tools.online
                       git pull origin master
                       cd api
-                      docker-compose build && docker-compose down && docker-compose up -d
+                      docker-compose down && docker-compose build && docker-compose up -d
                       docker-compose exec -T app php artisan optimize:clear
                       docker-compose exec -T app php artisan route:cache
                       docker-compose exec -T app ./vendor/bin/phpunit ./tests/Feature/
