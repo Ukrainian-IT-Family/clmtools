@@ -47,22 +47,22 @@ jobs:
     build:
         runs-on: ubuntu-latest
         needs: [test]
-#        steps:
-#            - name: Deploy
-#              uses: appleboy/ssh-action@v0.1.10
-#              with:
-#                  host: ${{ secrets.HOST }}
-#                  username: ${{ secrets.USERNAME }}
-#                  password: ${{ secrets.PASSWORD }}
-#                  port: ${{ secrets.PORT }}
-#                  script: |
-#                      cd clm-tools.online
+        steps:
+            - name: Deploy
+              uses: appleboy/ssh-action@v0.1.10
+              with:
+                  host: ${{ secrets.HOST }}
+                  username: ${{ secrets.USERNAME }}
+                  password: ${{ secrets.PASSWORD }}
+                  port: ${{ secrets.PORT }}
+                  script: |
+                      cd clm-tools.online
 #                      git pull origin master
 #                      cd api
 #                      docker-compose exec -T app php artisan optimize:clear
 #                      docker-compose exec -T app php artisan route:cache
 #                      docker-compose exec -T app ./vendor/bin/phpunit ./tests/Feature/
-#
+
 #            - name: Upload coverage reports to Codecov
 #              uses: codecov/codecov-action@v3
 #              env:
