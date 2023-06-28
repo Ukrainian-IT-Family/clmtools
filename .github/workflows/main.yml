@@ -53,7 +53,7 @@ jobs:
                   cd api
                   composer install
                   cp .env.testing.example .env.testing
-                  php artisan jwt:secret --env=testing
+                  echo "yes" | php artisan jwt:secret --env=testing
                   ./vendor/bin/phpunit --coverage-clover coverage.xml -c phpunit.github.xml
 
             - name: Upload coverage reports to Codecov
