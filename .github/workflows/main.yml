@@ -55,6 +55,7 @@ jobs:
                   PUSHER_APP_SECRET: ${{ secrets.PUSHER_APP_SECRET }}
                   PUSHER_APP_CLUSTER: ${{ secrets.PUSHER_APP_CLUSTER }}
                   MAIL_FROM_ADDRESS: ${{ secrets.MAIL_FROM_ADDRESS }}
+                  XDEBUG_MODE: coverage
               run: |
                   cd api
                   composer install
