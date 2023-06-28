@@ -49,6 +49,11 @@ jobs:
                       ${{ runner.os }}-composer-
 
             - name: Run api tests
+              env:
+                  PUSHER_APP_ID: ${{ secrets.PUSHER_APP_ID }}
+                  PUSHER_APP_KEY: ${{ secrets.PUSHER_APP_KEY }}
+                  PUSHER_APP_SECRET: ${{ secrets.PUSHER_APP_SECRET }}
+                  PUSHER_APP_CLUSTER: ${{ secrets.PUSHER_APP_CLUSTER }}
               run: |
                   cd api
                   composer install
