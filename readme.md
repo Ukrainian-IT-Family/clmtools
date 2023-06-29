@@ -1,5 +1,9 @@
 # CLMTools
 
+<a href="https://codecov.io/gh/Ukrainian-IT-Family/clmtools" >
+ <img src="https://codecov.io/gh/Ukrainian-IT-Family/clmtools/branch/master/graph/badge.svg?token=11HTKFR2FP"/>
+ </a>
+
 ## Technologies
 
 Backend:

@@ -82,12 +82,3 @@ jobs:
                   script: |
                       cd clm-tools.online
                       git pull origin master
-#                      cd api
-#                      docker-compose exec -T app php artisan optimize:clear
-#                      docker-compose exec -T app php artisan route:cache
-#                      docker-compose exec -T app ./vendor/bin/phpunit ./tests/Feature/
-
-#            - name: Upload coverage reports to Codecov
-#              uses: codecov/codecov-action@v3
-#              env:
-#                  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
