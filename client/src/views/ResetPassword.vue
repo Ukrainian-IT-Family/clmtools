@@ -1,11 +1,11 @@
 <template>
-  <section class="mt-4">
+  <section class="mt-30 auth-page">
     <div class="d-flex justify-content-center">
-      <div class="box shadow-box w-50">
-        <h3 class="text-center mb-4">{{ $t("auth.password_restore") }}</h3>
+      <div class="box shadow-box w-auth">
+        <h3 class="text-center mb-30 p-0">{{ $t("auth.password_restore") }}</h3>
 
         <form
-          class="form needs-validation"
+          class="needs-validation"
           :class="{ 'was-validated': validated }"
           @submit.prevent="onSubmit"
           novalidate="true"
@@ -15,6 +15,10 @@
           >
           <BAlert show variant="danger" v-if="errors.message">{{
             errors.message
+          }}</BAlert>
+
+          <BAlert show variant="danger" v-if="errors.password">{{
+            Object.values(errors.password).join('\r\n')
           }}</BAlert>
 
           <BFormGroup>
@@ -38,10 +42,6 @@
               required
             ></BFormInput>
           </BFormGroup>
-
-          <BAlert show variant="danger" v-if="errors.password">{{
-            Object.values(errors.password).join('\r\n')
-          }}</BAlert>
 
           <BButton block type="submit">
             {{ $t("auth.password_change") }}

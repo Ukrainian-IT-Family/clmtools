@@ -1,9 +1,9 @@
 <template>
-  <section class="mt-4">
+  <section class="mt-30 auth-page">
     <div class="d-flex justify-content-center">
-      <div class="box shadow-box w-50">
-        <h3 class="text-center mb-4">{{ $t("auth.authorization") }}</h3>
-        <form class="form" @submit.prevent novalidate="true">
+      <div class="box shadow-box w-auth">
+        <h3 class="text-center mb-30 p-0">{{ $t("auth.authorization") }}</h3>
+        <form @submit.prevent novalidate="true">
           <BFormGroup>
             <BFormInput
               id="input-email"
@@ -24,8 +24,8 @@
           </BFormGroup>
 
           <BRow>
-            <BCol>
-              <p class="ml-4">
+            <BCol class="mob-col-right">
+              <p class="ml-32 mob-ml-22 mb-20">
                 <RouterLink
                   class="link link-signup"
                   :to="{ name: 'auth.signUp' }"
@@ -34,8 +34,8 @@
                 </RouterLink>
               </p>
             </BCol>
-            <BCol>
-              <p class="mr-4 text-right">
+            <BCol class="mob-col-left">
+              <p class="mr-32 mob-mr-22 mb-20 text-right">
                 <RouterLink
                   class="link link-signup"
                   :to="{ name: 'auth.forgotPassword' }"

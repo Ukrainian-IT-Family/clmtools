@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="header">
         <BNavbar type="dark" variant="dark">
             <BNavbarBrand :to="{ path: '/' }">CMLTool</BNavbarBrand>
             <BNavbarNav class="ml-auto" align="right" v-if="isLoggedIn">
