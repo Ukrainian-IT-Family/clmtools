@@ -66,7 +66,7 @@
             ></BFormInput>
           </BFormGroup>
 
-          <p class="text-right">
+          <p class="mr-32 text-right">
             <RouterLink class="link link-signup" to="/auth/sign-in">
               {{ $t("auth.login") }}
             </RouterLink>
