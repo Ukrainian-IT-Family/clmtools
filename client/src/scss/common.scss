@@ -1,5 +1,4 @@
 #app {
-  //font-family: $body-font;
   font-size: $body-font-size;
   line-height: $body-line-height;
   color: $body-color;
@@ -287,10 +286,6 @@ ul.thumbnails {
     overflow: hidden;
     white-space: nowrap;
 }
-
-
-
-
 .header {
     .bg-dark {
         height: 55px;
@@ -310,7 +305,6 @@ ul.thumbnails {
         font-weight: 400 !important;
     }
 }
-
 .mt-30 {
     margin-top: 30px;
 }
@@ -332,7 +326,6 @@ ul.thumbnails {
 .mr-32 {
     margin-right: 32px;
 }
-
 .auth-page {
     .w-auth {
         width: 540px;
