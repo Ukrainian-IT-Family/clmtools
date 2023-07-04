@@ -1,16 +1,16 @@
 <template>
-  <section class="mt-4">
+  <section class="mt-30 auth-page">
     <div class="d-flex justify-content-center">
-      <div class="box shadow-box w-50">
-        <h3 class="text-center mb-4">{{ $t("auth.password_forgot") }}</h3>
-        <p class="text-center h5 mb-4">
+      <div class="box shadow-box w-auth">
+        <h3 class="text-center mb-30 p-0">{{ $t("auth.password_forgot") }}</h3>
+        <p class="text-center sub-text mb-30 fs-14">
           {{ $t("auth.will_send") }}
         </p>
         <BAlert show variant="success" v-if="validated"
           >{{ $t("auth.already_send") }}</BAlert
         >
         <form
-          class="form needs-validation"
+          class="needs-validation"
           @submit="onSubmit"
           :class="{ 'was-validated': validated }"
           novalidate="true"
@@ -28,7 +28,7 @@
             Object.values(errors.email).join('\r\n')
           }}</BAlert>
 
-          <p class="text-right">
+          <p class="mr-32 mob-mr-22 mb-20 text-right">
             <RouterLink class="link link-signup" :to="{ name: 'auth.signIn' }">
               {{ $t("auth.back_to_login") }}
             </RouterLink>

@@ -1,15 +1,45 @@
 <template>
-  <section class="mt-4">
+  <section class="mt-30 auth-page">
     <div class="d-flex justify-content-center">
-      <div class="box shadow-box w-50">
-        <h3 class="text-center">{{ $t("auth.registration") }}</h3>
-        <form class="form" @submit.prevent novalidate="true">
+      <div class="box shadow-box w-auth">
+        <h3 class="text-center mb-30 p-0">{{ $t("auth.registration") }}</h3>
+        <form @submit.prevent novalidate="true">
+
+          <BFormGroup>
+            <BFormInput
+                id="input-name"
+                v-model="user.name"
+                name="first_name"
+                :placeholder="$t('auth.name')"
+                autofocus
+            ></BFormInput>
+          </BFormGroup>
+
+          <BFormGroup>
+            <BFormInput
+                id="input-lastName"
+                v-model="user.lastName"
+                name="last_name"
+                :placeholder="$t('auth.last_name')"
+            ></BFormInput>
+          </BFormGroup>
+
           <BFormGroup>
             <BFormInput
               id="input-email"
               v-model="user.email"
               name="email"
               :placeholder="$t('auth.email')"
+            ></BFormInput>
+          </BFormGroup>
+
+          <BFormGroup class="mask">
+            <BFormInput class="short" readonly="" value="+38"></BFormInput>
+            <BFormInput
+                id="input-phone"
+                v-model="user.phone"
+                name="phone"
+                :placeholder="$t('auth.phone')"
             ></BFormInput>
           </BFormGroup>
 
@@ -21,7 +51,7 @@
               name="password"
               :placeholder="$t('auth.password')"
             ></BFormInput>
-            <p class="alert alert-warning">
+            <p class="auth-alert alert-warning">
               {{ $t("auth.password_warning") }}
             </p>
           </BFormGroup>
@@ -33,35 +63,6 @@
               type="password"
               name="password_confirmation"
               :placeholder="$t('auth.password_confirmation')"
-            ></BFormInput>
-          </BFormGroup>
-
-          <BFormGroup>
-            <BFormInput
-              id="input-name"
-              v-model="user.name"
-              name="first_name"
-              :placeholder="$t('auth.name')"
-              autofocus
-            ></BFormInput>
-          </BFormGroup>
-
-          <BFormGroup>
-            <BFormInput
-              id="input-lastName"
-              v-model="user.lastName"
-              name="last_name"
-              :placeholder="$t('auth.last_name')"
-            ></BFormInput>
-          </BFormGroup>
-
-          <BFormGroup class="mask">
-            <BFormInput class="short" readonly="" value="+38"></BFormInput>
-            <BFormInput
-              id="input-phone"
-              v-model="user.phone"
-              name="phone"
-              :placeholder="$t('auth.phone')"
             ></BFormInput>
           </BFormGroup>
 

@@ -67,10 +67,10 @@ export default {
             password_warning: 'has 8 or more characters, has at least one capital letter, has at least\n' +
                 'one lowercase letter, has at least one number',
             password_confirmation: 'Confirm password',
-            name: 'My name',
+            name: 'First Name',
             last_name: 'Last Name',
             phone: 'Phone',
-            login: 'Already have an account? Sign in.',
+            login: 'Already have an account? Sign in',
             register: 'Register',
             email_confirm: 'Email confirmation',
             resend: 'Send the letter again',

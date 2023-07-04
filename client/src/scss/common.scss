@@ -1,5 +1,4 @@
 #app {
-  font-family: $body-font;
   font-size: $body-font-size;
   line-height: $body-line-height;
   color: $body-color;
@@ -10,7 +9,9 @@ html {
     min-height: 100%;
 }
 body {
-    margin-bottom: 60px; /* Margin bottom by footer height */
+    min-width: 320px;
+    font-family: 'Montserrat', sans-serif;
+    color: #00114D;
 }
 footer ul {
     margin-top: 1rem;
@@ -21,6 +22,7 @@ footer ul {
     width: 100%;
     background-color: #f5f5f5;
     display: none;
+    margin-top: 60px;
 }
 container {
     width: auto;
@@ -30,7 +32,7 @@ container {
     font-weight: 700;
 }
 .bg-dark {
-    background-color: #888e93 !important;
+    background-color: #BFCDFF !important;
 }
 .message-area {
     height: 400px;
@@ -283,4 +285,196 @@ ul.thumbnails {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+}
+.header {
+    .bg-dark {
+        height: 55px;
+    }
+    .navbar-dark .navbar-brand {
+        color: #00114D;
+    }
+    .navbar-brand {
+        font-size: 24px;
+    }
+    .navbar-dark .navbar-nav .nav-link {
+        color: #00114D;
+        font-size: 16px;
+        font-weight: 300;
+    }
+    .router-link-exact-active {
+        font-weight: 400 !important;
+    }
+}
+.mt-30 {
+    margin-top: 30px;
+}
+.mb-20 {
+    margin-bottom: 20px;
+}
+.mb-30 {
+    margin-bottom: 30px;
+}
+.fs-14 {
+    font-size: 14px;
+}
+.fs-16 {
+    font-size: 16px;
+}
+.ml-32 {
+    margin-left: 32px;
+}
+.mr-32 {
+    margin-right: 32px;
+}
+.auth-page {
+    .w-auth {
+        width: 540px;
+    }
+    .text-center {
+        color: var(--dark-blue, #00114D);
+    }
+    .link-signup {
+        color: var(--dark-blue, #00114D);
+        font-size: 16px;
+        font-family: Roboto;
+        font-weight: 300;
+    }
+    .btn-secondary {
+        display: flex;
+        max-width: 540px;
+        height: 40px;
+        padding: 6px 30px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border-radius: 10px;
+        border: 1.5px solid var(--dark-blue, #00114D);
+        background: var(--dark-blue, #00114D);
+        color: var(--white, #FFF);
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-control {
+        display: flex;
+        max-width: 540px;
+        height: 40px;
+        padding: 15px 30px;
+        align-items: center;
+        gap: 1px;
+        border-radius: 10px;
+        border: 1.5px solid var(--light-blue, #BFCDFF);
+        background-image: none;
+        color: var(--dark-blue, #00114D);
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .form-control::placeholder {
+        color: var(--light-blue, #BFCDFF);
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .was-validated .form-control:valid, .form-control.is-valid {
+        background-image: none;
+        border: 1px solid var(--green, #155724);
+    }
+    .alert-warning {
+        font-family: Roboto;
+        font-size: 16px;
+    }
+    .alert-success {
+        margin-bottom: 20px;
+        border-radius: 10px;
+        border-color: #d4edda;
+    }
+    .auth-alert {
+        display: flex;
+        max-width: 540px;
+        flex-direction: column;
+        flex-shrink: 0;
+        padding: 15px 24px;
+    }
+    .short {
+        width: 92px;
+        border-radius: 10px;
+        background: var(--light-blue, #BFCDFF);
+        color: var(--white, #FFF);
+        font-size: 16px;
+        font-weight: 500;
+        margin-right: 4px;
+    }
+    #input-phone {
+        width: 82%;
+    }
+    .alert-danger {
+        border-radius: 10px;
+        border-color: #f8d7da;
+    }
+}
+
+@media (max-width: 500px) {
+    .header {
+        .bg-dark {
+            height: 48px;
+        }
+        .navbar-brand {
+            font-size: 20px;
+        }
+        .navbar-dark .navbar-nav .nav-link {
+            font-size: 14px;
+        }
+        .router-link-exact-active {
+            font-weight: 400 !important;
+        }
+    }
+    .auth-page {
+        h3.text-center {
+            font-size: 20px;
+        }
+        .sub-text {
+            margin-left: 24px;
+            margin-right: 24px;
+        }
+        .form-control {
+            font-size: 14px;
+            padding: 15px 20px;
+            height: 45px;
+        }
+        .form-control::placeholder {
+            font-size: 14px;
+        }
+        .link-signup {
+            font-size: 14px;
+        }
+        .mob-col-right {
+            padding-left: 15px;
+            max-width: 40%;
+        }
+        .mob-col-left {
+            padding-right: 15px;
+            max-width: 60%;
+        }
+        .mob-ml-22 {
+            margin-left: 22px !important;
+        }
+        .mob-mr-22 {
+            margin-right: 22px !important;
+        }
+        .btn-secondary {
+            font-size: 14px;
+            height: 45px;
+        }
+        .alert-warning {
+            font-size: 14px;
+        }
+        .short {
+            padding: 0px 20px;
+            width: 70px;
+        }
+        #input-phone {
+            width: 100%;
+        }
+    }
 }
