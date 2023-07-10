@@ -51,7 +51,7 @@
               name="password"
               :placeholder="$t('auth.password')"
             ></BFormInput>
-            <p class="auth-alert alert-warning">
+            <p class="auth-alert alert-warning sign-up-password-warning" v-if="isInvalidPassword && user.password.length > 0">
               {{ $t("auth.password_warning") }}
             </p>
           </BFormGroup>
@@ -105,7 +105,16 @@ export default {
       passwordConfirmation: ''
     }
   }),
-
+  computed: {
+      isInvalidPassword() {
+          const password = this.user.password;
+          const hasLessThanEightCharacters = password.length < 8;
+          const hasNoUppercaseLetter = !/[A-Z]/.test(password);
+          const hasNoLowercaseLetter = !/[a-z]/.test(password);
+          const hasNoDigit = !/\d/.test(password);
+          return hasLessThanEightCharacters || hasNoUppercaseLetter || hasNoLowercaseLetter || hasNoDigit;
+      }
+  },
   methods: {
     ...mapActions('auth', ['USER_REGISTER']),
     ...mapActions([
