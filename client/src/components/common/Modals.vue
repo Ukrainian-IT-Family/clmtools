@@ -70,8 +70,10 @@ export default {
 </script>
 <style>
 .mx-auto-center {
-    margin-top: 20%;
-    margin-left: 48%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 .bg-white-transparent {
     background-color: rgba(255, 255, 255, 1);
