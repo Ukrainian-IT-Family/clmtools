@@ -45,7 +45,7 @@ final class AuthController extends ApiController
         $response = $action->execute($request);
 
         if(!$response->getExpiresIn()){
-            return $this->errorResponse(__('authorize.unauthorized'));
+            return $this->errorResponse(__('authorize.incorrect_login_or_password'));
         }
 
         return $this->successResponse($authenticationResponseArrayPresenter->present($response));

@@ -50,7 +50,7 @@ class AuthApiTest extends TestCase
         ]);
 
         $response
-            ->assertJsonFragment(['message' => __('authorize.unauthorized')])
+            ->assertJsonFragment(['message' => __('authorize.incorrect_login_or_password')])
             ->assertStatus(400);
     }
 
