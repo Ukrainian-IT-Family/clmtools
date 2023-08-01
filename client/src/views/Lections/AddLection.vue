@@ -99,7 +99,9 @@
         <div class="ml-5">
             <div class="form-group">
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle max-width" type="button" @click="showDropdown('dropdownStudents')" v-text="count_students_text">
+                    <button
+                        :disabled="disabledStudentList"
+                        class="btn btn-secondary dropdown-toggle max-width" type="button" @click="showDropdown('dropdownStudents')" v-text="count_students_text">
                     </button>
                     <div class="dropdown-menu" v-show="dropdownStudents">
                         <div class="form-check dropdown-item" v-show="allStudents.length">
@@ -249,7 +251,8 @@ export default {
           button: '',
           count_students_text: '',
           choose_course_text: '',
-          showDelete: false
+          showDelete: false,
+          disabledStudentList: true,
         };
       },
 
@@ -434,6 +437,7 @@ export default {
         ? this.GetCourses.find(course => course.id === this.courses).title
         : this.$t("lectures.choose_course");
       this.filterByCourse();
+      this.disabledStudentList = false;
     },
 
     filterByCourse() {

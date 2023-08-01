@@ -153,6 +153,7 @@
         <div class="form-group">
           <div class="dropdown">
             <button
+              :disabled="disabledStudentList"
               class="btn btn-secondary dropdown-toggle max-width"
               type="button"
               @click="showDropdown('dropdownStudents')"
@@ -285,6 +286,7 @@ export default {
       modal_text: '',
       deadline_date: '',
       deadline_time: '',
+      disabledStudentList: true,
     };
   },
 
@@ -517,6 +519,7 @@ export default {
         ? this.GetCourses.find(course => course.id === this.courses).title
         : this.$t('lectures.choose_course');
       this.filterByCourse();
+      this.disabledStudentList = false;
     },
 
     chooseLection() {
