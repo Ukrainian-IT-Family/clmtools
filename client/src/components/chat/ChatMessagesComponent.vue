@@ -7,7 +7,7 @@
             :currentUserId="currentUserId"
         ></MessageComponent>
     </div>
-    <p v-else>{{ $t("message.empty_notification") }}</p>
+    <p v-else>{{ $t("message.empty_chat") }}</p>
 </template>
 
 <script>
