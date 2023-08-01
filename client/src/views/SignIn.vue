@@ -88,7 +88,6 @@ export default {
       this.USER_LOGIN(this.user)
         .then(() => {
           if (this.hasAuthenticatedUser) {
-            this.makeAlert(this.$t("auth.entered"));
             this.$router.push({ path: '/' }).catch(() => {});
           } else {
             this.showModal();
