@@ -62,7 +62,6 @@ export default {
             registration: 'Registration',
             enter: 'Enter',
             entering: 'Login',
-            entered: 'You are logged in',
             email: 'E-mail',
             password_warning: 'has 8 or more characters, has at least one capital letter, has at least\n' +
                 'one lowercase letter, has at least one number',
@@ -297,7 +296,6 @@ export default {
           registration: 'Реєстрація',
           enter: 'Увійти',
           entering: 'Вхід',
-          entered: 'Ви увійшли до системи',
           email: 'E-mail',
           password_warning: 'має 8 і більше символів, має хоча б одну велику літеру, має хоча б\n' +
               '              одну малу літеру, матє хоча б одну цифру',
