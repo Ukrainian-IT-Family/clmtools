@@ -127,15 +127,11 @@ export default {
         { commit },
         { form_data }
     ) => {
-        commit(SET_LOADING, true, { root: true });
         try {
             await ApiRequestService.post('/lecturer-message', form_data);
-            commit(SET_LOADING, false, { root: true });
 
             return Promise.resolve();
         } catch (errorMsg) {
-            commit(SET_LOADING, false, { root: true });
-
             return Promise.reject(errorMsg);
         }
     },
