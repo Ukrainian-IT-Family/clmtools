@@ -198,6 +198,9 @@ svg {
 .modal-content {
     width: fit-content;
 }
+.modal-body img {
+    max-width: 100%;
+}
 .notification-modal-body {
     height: 100%;
     max-height: 800px;
