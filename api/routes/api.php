@@ -105,7 +105,10 @@ Route::prefix('v1')->group(function () {
 
         Route::get('notifications', [NotificationController::class, 'getNotifications'])->name('notifications.list');
         Route::delete('notifications', [NotificationController::class, 'deleteNotifications'])->name('notifications.delete');
+        Route::post('notifications/read-all', [NotificationController::class, 'markNotificationsAsRead'])->name('notifications.read-all');
+        Route::get('notifications/unread-count', [NotificationController::class, 'getUnreadNotificationsCount'])->name('notifications.unread-count');
         Route::delete('notification', [NotificationController::class, 'deleteNotificationById'])->name('notification.delete');
+        Route::post('notification/read', [NotificationController::class, 'markNotificationAsRead'])->name('notification.read');
 
         Route::group(['prefix' => '/cities'], function () {
             Route::get('/', [HandbookControllers::class, 'getCities']);

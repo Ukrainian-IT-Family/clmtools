@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -12,7 +13,12 @@ class Notification extends Model
         'user_id',
         'title',
         'description',
-        'url'
+        'url',
+        'read_at'
+    ];
+
+    protected $casts = [
+        'read_at' => 'datetime',
     ];
 
     public function user(): BelongsTo
@@ -43,5 +49,15 @@ class Notification extends Model
     public function getCreatedAt(): Carbon
     {
         return $this->created_at;
+    }
+
+    public function getReadAt(): ?CarbonInterface
+    {
+        return $this->read_at;
+    }
+
+    public function isRead(): bool
+    {
+        return $this->read_at !== null;
     }
 }

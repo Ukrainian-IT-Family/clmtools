@@ -1,3 +1,5 @@
 export default {
-    notifications: null,
+  notifications: [],
+  unreadCount: 0,
+  filter: 'all'
 };

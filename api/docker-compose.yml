@@ -1,5 +1,3 @@
-version: "3.1"
-
 services:
     webserver:
       image: nginx:stable-alpine
@@ -21,6 +19,7 @@ services:
 
     mysql:
       image: mysql:5.7.22
+      platform: linux/amd64
       container_name: clm-mysql
       working_dir: /var/www/app
       volumes:
@@ -36,6 +35,7 @@ services:
 
     mysql-testing:
       image: mysql:5.7.22
+      platform: linux/amd64
       container_name: clm-mysql-testing
       volumes:
         - ./docker/mysql:/etc/mysql/conf.d
@@ -49,6 +49,7 @@ services:
 
     beanstalkd:
       image: schickling/beanstalkd
+      platform: linux/amd64
       container_name: clm-beanstalkd
 
     redis:
