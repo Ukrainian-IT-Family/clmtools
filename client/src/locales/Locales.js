@@ -229,6 +229,10 @@ export default {
         notifications: {
             title: 'Notifications',
             remove_all: 'Remove all',
+            mark_all_read: 'Mark all as read',
+            mark_read: 'Mark as read',
+            all: 'All',
+            unread: 'Unread',
             follow_the_link: 'Follow the link',
             empty: 'There are no new notifications.',
         }
@@ -462,7 +466,11 @@ export default {
       },
       notifications: {
           title: 'Сповіщення',
-          remove_all: 'Видалити всі1',
+          remove_all: 'Видалити всі',
+          mark_all_read: 'Позначити всі як прочитані',
+          mark_read: 'Позначити як прочитане',
+          all: 'Усі',
+          unread: 'Непрочитані',
           follow_the_link: 'Перейти',
           empty: 'Нових оповіщень немає.',
       }

@@ -34,7 +34,7 @@ final class NotificationRepository
 
     public function delete(int $id): ?bool
     {
-        return Notification::find($id)->delete();
+        return Notification::where('id', $id)->delete() > 0;
     }
 
     public function getNotificationsByUserId(int $user_id): Collection
@@ -50,5 +50,27 @@ final class NotificationRepository
         return Notification::where([
             ['user_id', $user_id],
         ])->delete();
+    }
+
+    public function markAsReadByIdAndUserId(int $notificationId, int $userId): int
+    {
+        return Notification::where('id', $notificationId)
+            ->where('user_id', $userId)
+            ->whereNull('read_at')
+            ->update(['read_at' => now()]);
+    }
+
+    public function markAsReadByUserId(int $userId): int
+    {
+        return Notification::where('user_id', $userId)
+            ->whereNull('read_at')
+            ->update(['read_at' => now()]);
+    }
+
+    public function getUnreadCountByUserId(int $userId): int
+    {
+        return Notification::where('user_id', $userId)
+            ->whereNull('read_at')
+            ->count();
     }
 }

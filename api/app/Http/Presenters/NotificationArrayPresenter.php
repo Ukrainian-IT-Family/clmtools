@@ -17,6 +17,8 @@ final class NotificationArrayPresenter
             'title' => $notification->getTitle(),
             'description' => $notification->getDescription(),
             'url' => $notification->getUrl(),
+            'is_read' => $notification->isRead(),
+            'read_at' => $notification->getReadAt() ? Carbon::parse($notification->getReadAt()) : null,
             'created_at' => Carbon::parse($notification->getCreatedAt())
         ];
     }
