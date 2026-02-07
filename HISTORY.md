@@ -136,3 +136,13 @@ Chronological log for prompt-level requests, explanations, and operational actio
 - Actions: Added dedicated section to `ONBOARDING_COST_OPTIMIZATION.md` with notification-slice scope, middle full-stack estimate, and Codex-assisted observed/practical ranges.
 - Files affected: `ONBOARDING_COST_OPTIMIZATION.md`, `HISTORY.md`
 - Outcome: Notification feature now has explicit time/cost comparison in onboarding optimization doc.
+
+### 20) Separate cost-usage comparison document request
+- Session Start: 2026-02-07 23:41:06 EET
+- Session End: 2026-02-07 23:41:26 EET
+- Timezone: EET
+- Duration: 0m 20s
+- Request: Analyze onboarding/feature cost data and create a separate markdown comparison showing real usage and cost savings.
+- Actions: Parsed existing assumptions and logged timings from `ONBOARDING_COST_OPTIMIZATION.md` and `HISTORY.md`; produced a standalone cost report with observed usage, baseline comparison, and savings calculations.
+- Files affected: `COST_USAGE_COMPARISON.md`, `HISTORY.md`
+- Outcome: Added a dedicated cost-usage comparison document with explicit time, spend, and savings numbers for bootstrap + notification feature work.
