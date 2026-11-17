@@ -8,7 +8,7 @@
 
 Backend:
 
-* PHP 8.1
+* PHP 8.5
 * [Laravel 9](https://laravel.com)
 * [Docker](https://www.docker.com/)
 * [Docker-compose](https://docs.docker.com/compose/)
