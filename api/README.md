@@ -2,7 +2,7 @@
 
 ## Pre-requisites
 
-- PHP 8.1
+- PHP 8.5
 
 - MySQL 5.7
 
